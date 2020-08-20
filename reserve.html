@@ -50,7 +50,26 @@
     </div>
   </div>
 </div>
-  <script type="text/javascript" src="">
-  </script>
+<script type="text/javascript">
+  $("#add-btn").on("click", function (event) {
+    event.preventDefault();
+    if (data) {
+      $.post("/api/table", newtable)
+        .then(function (data) {
+          var newReservation = {
+            name: $("#name").val().trim(),
+            phonenumber: $("#phonenumber").val().trim(),
+            email: $("#email").val().trim(),
+            id: $("#id").val().trim()
+          };
+          alert("you successfully booked your table");
+        });
+    }
+    else {
+      alert("sorry ,something went wrong")
+    }
+  });
+
+</script>
 </body>
 </html>
